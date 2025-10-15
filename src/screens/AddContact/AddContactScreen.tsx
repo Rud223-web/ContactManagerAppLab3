@@ -4,22 +4,19 @@ import {
   ScrollView,
   Alert,
   StyleSheet,
-  SafeAreaView,
   KeyboardAvoidingView,
   Platform,
   TextInput,
 } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RouteProp } from '@react-navigation/native';
 import { useContacts } from '../../utils/ContactContext';
 import CustomInput from '../../components/common/CustomInput';
 import CustomButton from '../../components/common/CustomButton';
-import { validateContact, Contact } from '../../data/contactsData';
+import { validateContact } from '../../data/contactsData';
 import { Colors, Spacing, GlobalStyles } from '../../styles/globalStyles';
-
-type RootStackParamList = {
-  AddContact: { contact?: Contact };
-};
+import { RootStackParamList } from '../../types/navigation';
 
 type Props = {
   navigation: NativeStackNavigationProp<RootStackParamList, 'AddContact'>;
@@ -76,10 +73,10 @@ const AddContactScreen: React.FC<Props> = ({ navigation, route }) => {
         Alert.alert('Success', 'Contact added successfully');
       }
       navigation.goBack();
-  } catch (error) {
-  console.error('Save contact failed:', error);
-  Alert.alert('Error', 'Failed to save contact. Please try again.');
-  } finally {
+    } catch (error) {
+      console.error('Save contact failed:', error);
+      Alert.alert('Error', 'Failed to save contact. Please try again.');
+    } finally {
       setLoading(false);
     }
   }, [formData, isEdit, existingContact, addContact, updateContact, navigation]);

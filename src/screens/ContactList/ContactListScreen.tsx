@@ -7,9 +7,9 @@ import {
   Alert,
   Linking,
   StyleSheet,
-  SafeAreaView,
   TouchableOpacity,
 } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { Contact, searchContacts } from '../../data/contactsData';
@@ -29,12 +29,7 @@ type Props = {
 };
 
 const ContactListScreen: React.FC<Props> = ({ navigation }) => {
-  const {
-    contacts,
-    loading,
-    toggleFavorite,
-    refreshContacts,
-  } = useContacts();
+  const { contacts, loading, toggleFavorite, refreshContacts } = useContacts();
 
   const [searchTerm, setSearchTerm] = useState('');
   const [refreshing, setRefreshing] = useState(false);
@@ -272,7 +267,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     lineHeight: 22,
   },
-    floatingButton: {
+  floatingButton: {
     position: 'absolute',
     bottom: 20,
     right: 20,

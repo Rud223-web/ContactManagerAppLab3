@@ -3,17 +3,18 @@ import { StyleSheet, Dimensions, TextStyle, ViewStyle } from 'react-native';
 const { width: SCREEN_WIDTH, height: SCREEN_HEIGHT } = Dimensions.get('window');
 
 export const Colors = {
-  primary: '#3498db',
-  secondary: '#2ecc71',
-  accent: '#e74c3c',
-  background: '#f8f9fa',
+  primary: '#1976d2',
+  secondary: '#9c27b0',
+  accent: '#ff9800',
+  background: '#f5f5f5',
   surface: '#ffffff',
+  border: '#e0e0e0',
   text: {
-    primary: '#2c3e50',
-    secondary: '#7f8c8d',
-    light: '#ecf0f1',
+    primary: '#212121',
+    secondary: '#757575',
+    light: '#ffffff',
   },
-  border: '#dee2e6',
+  error: '#d32f2f',
 };
 
 export const Fonts = {
@@ -103,4 +104,17 @@ export const GlobalStyles = StyleSheet.create<GlobalStyleTypes>({
     marginTop: Spacing.xs,
     marginLeft: Spacing.sm,
   },
+  deleteButton: {
+  marginTop: Spacing.lg,
+  paddingVertical: Spacing.sm,
+  paddingHorizontal: Spacing.md,
+  backgroundColor: Colors.error,
+  borderRadius: 8,
+  alignItems: 'center',
+},
+deleteText: {
+  color: Colors.text.light,
+  fontSize: Fonts.medium,
+  fontWeight: 'bold',
+},
 });
